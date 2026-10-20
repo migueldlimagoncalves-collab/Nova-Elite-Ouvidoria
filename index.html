@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111111">
+<title>Ouvidoria Estudantil | Nova Elite</title>
+<style>
+:root{--bg:#0b0b0d;--panel:#151519;--red:#e11d2e;--red2:#ff3445;--text:#f7f7f8;--muted:#b6b6bf;--line:#303037}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top right,#351015 0,transparent 35%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5}
+.wrap{width:min(760px,100%);margin:auto;padding:22px 16px 48px}.brand{display:flex;gap:14px;align-items:center;margin:10px 0 30px}.mark{display:grid;place-items:center;width:58px;height:58px;border-radius:16px;background:var(--red);font-size:28px;font-weight:900;box-shadow:0 8px 28px #e11d2e35}.brand h1{font-size:1.25rem;line-height:1.1;margin:0;letter-spacing:.08em}.brand p{color:var(--red2);font-weight:800;letter-spacing:.1em;font-size:.78rem;margin:6px 0 0}.hero{padding:26px 22px;border:1px solid #542027;border-radius:22px;background:linear-gradient(145deg,#1a1416,#111113 65%);margin-bottom:20px}.eyebrow{color:#ff6975;font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.hero h2{font-size:clamp(1.8rem,7vw,2.8rem);line-height:1.06;margin:10px 0 12px}.hero p{color:#d0cdd1;margin:0}.notice{background:#201518;border:1px solid #51232b;color:#e7d9dc;padding:12px 14px;border-radius:12px;font-size:.88rem;margin:16px 0 22px}.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px;margin:16px 0}.card h3{margin:0 0 5px;font-size:1.15rem}.sub{color:var(--muted);font-size:.9rem;margin:0 0 18px}label{display:block;font-weight:650;font-size:.92rem;margin:15px 0 7px}input,select,textarea{font:inherit;color:var(--text);width:100%;background:#0e0e11;border:1px solid #3a3a43;border-radius:11px;padding:12px 13px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--red);box-shadow:0 0 0 3px #e11d2e20}textarea{min-height:140px;resize:vertical}.radios{display:grid;grid-template-columns:1fr 1fr;gap:10px}.choice{display:flex;gap:9px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:12px;font-weight:500;background:#101014}.choice input{width:auto;margin-top:5px;accent-color:var(--red)}.hint{font-size:.8rem;color:var(--muted);margin-top:7px}.btn{border:0;border-radius:12px;padding:14px 16px;background:var(--red);color:white;font-weight:850;font-size:1rem;width:100%;cursor:pointer;margin-top:18px}.btn:hover{background:var(--red2)}.btn:disabled{opacity:.55;cursor:wait}.status{display:none;padding:12px;border-radius:10px;margin-top:14px}.status.ok{display:block;background:#10291c;border:1px solid #246a40;color:#b8f5cd}.status.err{display:block;background:#321418;border:1px solid #8c2934;color:#ffd0d4}.foot{text-align:center;color:#85858e;font-size:.8rem;margin-top:24px}.hidden{display:none!important}.small-link{color:#ff6975;text-decoration:underline;cursor:pointer;background:none;border:0;padding:0;font:inherit}.admin-list article{border:1px solid var(--line);padding:13px;border-radius:12px;margin:10px 0}.admin-list article p{white-space:pre-wrap;overflow-wrap:anywhere}.admin-list select{margin-top:8px}
+@media(max-width:460px){.radios{grid-template-columns:1fr}.card{padding:16px}.hero{padding:22px 18px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="brand"><div class="mark">NE</div><div><h1>NOVA ELITE</h1><p>OUVIDORIA ESTUDANTIL</p></div></header>
+  <section class="hero">
+    <div class="eyebrow">Participação estudantil</div>
+    <h2>Sua voz.<br><span style="color:var(--red2)">Nossa atitude.</span></h2>
+    <p>Tem uma ideia para melhorar a escola? Quer compartilhar uma sugestão, elogio ou preocupação? Este canal é para ouvir os estudantes com respeito.</p>
+  </section>
+  <div class="notice"><strong>Importante:</strong> este canal é organizado pela chapa candidata Nova Elite e não é um canal oficial da escola. Em situações de risco imediato, procure um adulto de confiança ou a equipe responsável da escola.</div>
+
+  <section class="card" id="form-card">
+    <h3>Faça sua manifestação</h3>
+    <p class="sub">Preencha o formulário. Não inclua senhas, documentos pessoais ou informações íntimas desnecessárias.</p>
+    <form id="report-form">
+      <label>Como deseja enviar?</label>
+      <div class="radios">
+        <label class="choice"><input type="radio" name="identity_mode" value="anonymous" checked> <span><strong>Anônimo</strong><br><span class="hint">Não pediremos nome ou contato.</span></span></label>
+        <label class="choice"><input type="radio" name="identity_mode" value="identified"> <span><strong>Identificado</strong><br><span class="hint">Você pode informar como responder.</span></span></label>
+      </div>
+      <div id="identity-fields" class="hidden">
+        <label for="display_name">Nome (opcional)</label><input id="display_name" maxlength="100" autocomplete="name" placeholder="Como podemos chamar você?">
+        <label for="contact">Contato (opcional)</label><input id="contact" maxlength="160" placeholder="E-mail ou outro contato, se quiser resposta">
+      </div>
+      <label for="category">Tipo de manifestação</label>
+      <select id="category" required>
+        <option value="">Selecione</option><option>Sugestão</option><option>Reclamação</option><option>Elogio</option><option>Ideia de projeto</option><option>Preocupação ou relato</option><option>Outro</option>
+      </select>
+      <label for="subject">Assunto</label><input id="subject" maxlength="120" required placeholder="Resuma em poucas palavras">
+      <label for="message">Sua mensagem</label><textarea id="message" maxlength="5000" required placeholder="Conte o que você gostaria que a Nova Elite soubesse..."></textarea>
+      <div class="hint">Até 5.000 caracteres. Evite identificar outros estudantes sem necessidade.</div>
+      <label class="choice" style="margin-top:16px"><input id="consent" type="checkbox" required><span>Entendo que a manifestação será recebida pela equipe autorizada da chapa Nova Elite para análise. Li o aviso de privacidade abaixo.</span></label>
+      <button class="btn" id="submit-btn" type="submit">Enviar manifestação</button>
+      <div class="status" id="form-status" role="status" aria-live="polite"></div>
+    </form>
+  </section>
+  <section class="card">
+    <h3>Privacidade e limites do anonimato</h3>
+    <p class="sub" style="margin-bottom:0">O formulário anônimo não solicita nome nem contato, mas o serviço de hospedagem ou banco de dados pode registrar dados técnicos, como endereço IP, conforme sua configuração. Não use este canal para emergências. As manifestações devem ser acessadas apenas por pessoas autorizadas. Antes de publicar, a chapa deve indicar quem administra os dados e por quanto tempo serão guardados.</p>
+  </section>
+  <section class="card" id="admin-login-card">
+    <h3>Área restrita da equipe</h3><p class="sub">Acesso exclusivo a administradores autorizados.</p>
+    <div id="admin-signed-out">
+      <label for="admin-email">E-mail administrativo</label><input id="admin-email" type="email" autocomplete="username" placeholder="admin@exemplo.com">
+      <label for="admin-password">Senha</label><input id="admin-password" type="password" autocomplete="current-password" placeholder="Senha da conta autorizada">
+      <button class="btn" id="login-btn" type="button">Entrar no painel</button><div class="status" id="login-status" role="status"></div>
+    </div>
+    <div id="admin-signed-in" class="hidden">
+      <p class="sub">Sessão administrativa ativa.</p><button class="btn" id="refresh-btn" type="button">Atualizar manifestações</button><button class="btn" id="logout-btn" type="button" style="background:#333">Sair do painel</button>
+      <div class="admin-list" id="admin-list"></div>
+    </div>
+  </section>
+  <footer class="foot">Nova Elite · Ouvidoria estudantil<br>Canal de participação da chapa candidata</footer>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+/*
+  CONFIGURAÇÃO OBRIGATÓRIA:
+  1) Crie um projeto Supabase e aplique supabase/schema.sql.
+  2) Cole aqui a URL do projeto e a chave anon/public (NUNCA a service_role).
+  3) Cadastre os administradores em Authentication > Users e permita acesso apenas aos usuários autorizados.
+  4) Configure a função de notificação descrita no README.
+*/
+const SUPABASE_URL = "COLE_AQUI_A_URL_DO_PROJETO";
+const SUPABASE_ANON_KEY = "COLE_AQUI_A_CHAVE_ANON_PUBLICA";
+const configured = SUPABASE_URL.startsWith("https://") && !SUPABASE_ANON_KEY.startsWith("COLE_AQUI");
+let db = null;
+if (configured && window.supabase) db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const $ = id => document.getElementById(id);
+document.querySelectorAll('input[name="identity_mode"]').forEach(el => el.addEventListener('change', () => {
+  $('identity-fields').classList.toggle('hidden', document.querySelector('input[name="identity_mode"]:checked').value !== 'identified');
+}));
+function showStatus(el, msg, ok=false){el.textContent=msg;el.className='status '+(ok?'ok':'err')}
+$('report-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  if(!db){showStatus($('form-status'),'O site ainda não foi conectado ao banco de dados. A equipe precisa concluir a configuração antes de receber manifestações.');return}
+  const mode=document.querySelector('input[name="identity_mode"]:checked').value;
+  const payload={identity_mode:mode,display_name:mode==='identified'?($('display_name').value.trim()||null):null,contact:mode==='identified'?($('contact').value.trim()||null):null,category:$('category').value,subject:$('subject').value.trim(),message:$('message').value.trim()};
+  if(!payload.subject||!payload.message||!payload.category){showStatus($('form-status'),'Preencha o tipo, o assunto e a mensagem.');return}
+  $('submit-btn').disabled=true;$('submit-btn').textContent='Enviando...';
+  const {data,error}=await db.from('manifestations').insert(payload).select('id').single();
+  $('submit-btn').disabled=false;$('submit-btn').textContent='Enviar manifestação';
+  if(error){showStatus($('form-status'),'Não foi possível enviar agora. Tente novamente mais tarde.');return}
+  $('report-form').reset();$('identity-fields').classList.add('hidden');
+  showStatus($('form-status'),'Manifestação enviada. Obrigado por participar! Guarde este protocolo: '+data.id.slice(0,8).toUpperCase(),true);
+});
+$('login-btn').addEventListener('click',async()=>{
+  if(!db){showStatus($('login-status'),'O banco de dados ainda não foi configurado.');return}
+  const {error}=await db.auth.signInWithPassword({email:$('admin-email').value.trim(),password:$('admin-password').value});
+  if(error){showStatus($('login-status'),'Não foi possível entrar. Confira suas credenciais ou peça acesso ao responsável.');return}
+  $('admin-signed-out').classList.add('hidden');$('admin-signed-in').classList.remove('hidden');await loadReports();
+});
+async function loadReports(){
+  const box=$('admin-list');box.innerHTML='<p class="sub">Carregando...</p>';
+  const {data,error}=await db.from('manifestations').select('id,created_at,identity_mode,display_name,contact,category,subject,message,status').order('created_at',{ascending:false}).limit(200);
+  if(error){box.textContent='Não foi possível carregar as manifestações. Verifique se esta conta tem permissão administrativa.';return}
+  box.innerHTML='';
+  if(!data.length){box.textContent='Nenhuma manifestação recebida ainda.';return}
+  for(const r of data){
+    const article=document.createElement('article');
+    const title=document.createElement('strong');title.textContent=r.subject;
+    const meta=document.createElement('div');meta.className='hint';meta.textContent=new Date(r.created_at).toLocaleString('pt-BR')+' · '+r.category+' · '+(r.identity_mode==='anonymous'?'Anônima':(r.display_name||'Identificada'));
+    const msg=document.createElement('p');msg.textContent=r.message;
+    const contact=document.createElement('div');contact.className='hint';contact.textContent=r.contact?'Contato: '+r.contact:'';
+    const status=document.createElement('select');
+    ['Recebida','Em análise','Respondida','Concluída'].forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;o.selected=s===r.status;status.appendChild(o)});
+    status.addEventListener('change',async()=>{const {error}=await db.from('manifestations').update({status:status.value}).eq('id',r.id);if(error)alert('Não foi possível atualizar o status.');});
+    article.append(title,meta,msg,contact,status);box.appendChild(article);
+  }
+}
+$('refresh-btn').addEventListener('click',loadReports);
+$('logout-btn').addEventListener('click',async()=>{await db.auth.signOut();$('admin-signed-in').classList.add('hidden');$('admin-signed-out').classList.remove('hidden');$('admin-list').innerHTML='';});
+if(db){db.auth.getSession().then(({data})=>{if(data.session){$('admin-signed-out').classList.add('hidden');$('admin-signed-in').classList.remove('hidden');loadReports()}})}
+</script>
+</body></html>
